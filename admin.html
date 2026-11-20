@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — Blast Undangan Edu Fair 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">EduFair <span>2026</span></a>
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Buka menu navigasi">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Halaman Undangan</a></li>
+                <li><a href="#upload-section">Upload CSV</a></li>
+                <li><a href="#daftar-tamu">Daftar Tamu</a></li>
+                <li><a href="#rekap-rsvp">Rekap RSVP</a></li>
+                <li><a href="admin.html" class="nav-btn">Panel Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="admin-header">
+        <div class="container">
+            <h1>Panel Blast Undangan</h1>
+            <p>Edu Fair &amp; Career Day 2026 — Sistem Manajemen Tamu CSV</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="upload-section" class="card">
+            <h3>1. Unggah Database Tamu (.CSV)</h3>
+            <p class="text-muted">Pilih file <code>data-tamu.csv</code> sekali saja — data otomatis tersimpan di browser walau tab ditutup.</p>
+            
+            <div class="upload-box">
+                <input type="file" id="csv-file-input" accept=".csv">
+                <div class="base-url-config">
+                    <label for="base-url-input">Base URL Undangan (Otomatis terdeteksi / bisa diubah):</label>
+                    <input type="text" id="base-url-input" placeholder="http://localhost/edu-fair/index.html">
+                </div>
+            </div>
+        </section>
+
+        <section id="daftar-tamu" class="card">
+            <div class="flex-between mb-1">
+                <h3>2. Daftar Penerima &amp; Generator Tautan</h3>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <span id="total-guests" class="category-pill">0 Data Dimuat</span>
+                    <button id="btn-clear-csv" type="button" style="background:#ef4444;color:#fff;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:0.8rem;font-weight:600;">Hapus Data</button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table id="guest-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nama Tamu</th>
+                            <th>Instansi</th>
+                            <th>Kategori</th>
+                            <th>No. WhatsApp</th>
+                            <th>Pratinjau Link</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="guest-table-body">
+                        <tr>
+                            <td colspan="7" class="empty-state">Silakan unggah file <strong>data-tamu.csv</strong> untuk menampilkan daftar tamu.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="rekap-rsvp" class="card">
+            <div class="flex-between mb-1">
+                <h3>3. Rekap Konfirmasi Kehadiran (RSVP)</h3>
+                <span id="total-rsvp" class="category-pill">0 Konfirmasi</span>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Instansi</th>
+                            <th>Nama PIC</th>
+                            <th>Status Kehadiran</th>
+                            <th>Jumlah</th>
+                            <th>Waktu Kirim</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rsvp-table-body">
+                        <tr>
+                            <td colspan="6" class="empty-state">Belum ada tamu yang mengisi form RSVP.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
